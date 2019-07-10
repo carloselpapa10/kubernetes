@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "demo"
+  labels:
+    app: demo
+    secure: enabled
+spec:
+  selector:
+    matchLabels:
+      run: load-balancer-example
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: load-balancer-example
+    spec:
+      containers:
+        - name: nginx
+          image: "nginx:1.9.14"
+          lifecycle:
+            preStop:
+              exec: 
+                command: ["/usr/sbin/nginx","-s","quit"]
+          volumeMounts:
+            - name: "nginx-proxy-conf"
+              mountPath: "/etc/nginx/config.d"
+        - name: demo
+          image: "carloselpapa10/demo:latest"
+          ports:
+            - name: http
+              containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 15
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 10
+            timeoutSeconds: 1
+      volumes:
+        - name: "nginx-proxy-conf"
+          configMap:
+            name: "nginx-proxy-conf"
+            items:
+              - key: "proxy.conf"
+                path: "proxy.conf"
