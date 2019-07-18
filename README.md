@@ -14,6 +14,7 @@ A preparation for the Certified Kubernetes Application Developer (CKAD) program 
 - Resource Quotas
 - Limit Range
 - Labels
+- Annotations
 - Deployments
 - Services
 - HealthChecks - Liveness & Readiness Probes
