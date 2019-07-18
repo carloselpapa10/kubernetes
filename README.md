@@ -3,6 +3,21 @@ A preparation for the Certified Kubernetes Application Developer (CKAD) program 
 
 [CKAD Curriculum](https://github.com/cncf/curriculum/blob/master/CKAD_Curriculum_V1.14.1.pdf)
 
+## RoadMap
+- Learn DevOps: The complete Kubernetes Course (Udemy)
+- Scalable Microservices with Kubernetes (Google free course)
+- Nginx, Busybox
+- Namespaces
+- Pod & Controllers
+- Pod Lifecycle
+- Metrics Servers
+- Resource Quotas
+- Limit Range
+- Labels
+- Deployments
+- Services
+- HealthChecks - Liveness & Readiness Probes
+
 ## Kubernetes Setup (Locally)
 
 **Minikube** -> It runs a single-node Kubernetes cluster inside a Linux VM. It works on Windows, Linux and MacOS.
