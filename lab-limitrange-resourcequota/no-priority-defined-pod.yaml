@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-priority
+spec:
+  containers:
+  - name: no-priority
+    image: ubuntu
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do echo hello; sleep 10; done"]
+    resources:
+      requests:
+        memory: "1Gi"
+        cpu: "50m"
+      limits:
+        memory: "5Gi"
+        cpu: "50m"
