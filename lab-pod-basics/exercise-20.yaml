@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    labels:
+      app: v1
+    name: nginx1
+  spec:
+    containers:
+    - image: nginx
+      name: nginx1
+    restartPolicy: Never
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    labels:
+      app: v1
+    name: nginx2
+  spec:
+    containers:
+    - image: nginx
+      name: nginx2
+    restartPolicy: Never
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    labels:
+      app: v1
+    name: nginx3
+  spec:
+    containers:
+    - image: nginx
+      name: nginx3
+    restartPolicy: Never
